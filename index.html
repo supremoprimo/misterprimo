@@ -804,8 +804,9 @@
 
         .portfolio-item:nth-child(1) { grid-column: span 7; grid-row: span 1; }
         .portfolio-item:nth-child(2) { grid-column: span 5; grid-row: span 1; }
-        .portfolio-item:nth-child(3) { grid-column: span 5; grid-row: span 1; }
-        .portfolio-item:nth-child(4) { grid-column: span 7; grid-row: span 1; }
+        .portfolio-item:nth-child(3) { grid-column: span 4; grid-row: span 1; }
+        .portfolio-item:nth-child(4) { grid-column: span 4; grid-row: span 1; }
+        .portfolio-item:nth-child(5) { grid-column: span 4; grid-row: span 1; }
 
         .capstone-item { cursor: none; }
         .capstone-bg {
@@ -1205,6 +1206,7 @@
             .portfolio-item:nth-child(2) { grid-column: span 12; }
             .portfolio-item:nth-child(3) { grid-column: span 12; }
             .portfolio-item:nth-child(4) { grid-column: span 12; }
+            .portfolio-item:nth-child(5) { grid-column: span 12; }
         }
 
         @media (max-width: 768px) {
@@ -1425,6 +1427,7 @@
                     <button class="filter-btn" data-filter="design">Design</button>
                     <button class="filter-btn" data-filter="video">Video</button>
                     <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="android">Android</button>
                 </div>
             </div>
             <div class="portfolio-grid reveal" style="transition-delay:0.2s">
@@ -1456,6 +1459,16 @@
                         <h3 class="port-title">Website Designs</h3>
                         <p class="port-desc">Custom websites focused on clean layout, responsive design, and user experience.</p>
                         <a href="#" class="port-link open-modal" data-project="web">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Android Apps -->
+                <div class="portfolio-item" data-category="android" data-project="android">
+                    <img src="images/android/an1.png" alt="Android Apps">
+                    <div class="portfolio-overlay">
+                        <span class="port-cat">Android Development</span>
+                        <h3 class="port-title">Android Apps</h3>
+                        <p class="port-desc">A collection of Android applications I designed and developed.</p>
+                        <a href="#" class="port-link open-modal" data-project="android">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <!-- Capstone Project -->
@@ -1694,6 +1707,18 @@
                     'images/web/web.png',
                     'images/web/webs.png',
                     'images/web/websi.png',
+                ]
+            },
+            android: {
+                cat: 'Android Development',
+                title: 'Android Apps',
+                images: [
+                    'images/android/an1.png',
+                    'images/android/an2.png',
+                    'images/android/an3.png',
+                    'images/android/an4.png',
+                    'images/android/an5.png',
+                    'images/android/an6.png',
                 ]
             },
             capstone: {
