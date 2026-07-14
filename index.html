@@ -1,0 +1,3007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peniel N. Rocha | IT Portfolio</title>
+  <meta name="description" content="Information Technology graduate portfolio — projects, skills, certifications, and creative work. Based in Quezon City, Philippines.">
+  <meta property="og:title" content="Peniel N. Rocha | IT Portfolio">
+  <meta property="og:description" content="IT graduate specializing in systems development, technical support, and machine learning.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c0a14'/%3E%3Ctext x='8' y='22' font-family='Arial' font-size='14' font-weight='700' fill='%237c6cf0'%3EPR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0a14;
+      --bg2: #12101c;
+      --bg3: #181524;
+      --panel: #1c1829;
+      --border: rgba(124, 108, 240, 0.18);
+      --border-strong: rgba(124, 108, 240, 0.45);
+      --text: #eef0f8;
+      --text-muted: #a8adc8;
+      --text-dim: #6b7194;
+      --accent: #7c6cf0;
+      --accent-dim: #5a4db8;
+      --cyan: #00d4ff;
+      --pink: #e056fd;
+      --amber: #ffb347;
+      --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-display: 'Exo 2', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      --glow: 0 0 24px rgba(124, 108, 240, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle ambient glow — no scanlines */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgba(124, 108, 240, 0.12), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 80%, rgba(0, 212, 255, 0.08), transparent 50%),
+        radial-gradient(ellipse 40% 30% at 70% 20%, rgba(224, 86, 253, 0.06), transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: var(--cyan); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    /* ===== PIXEL GAME BACKGROUND ===== */
+    .pixel-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .pixel-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124, 108, 240, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 108, 240, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 20%, transparent 75%);
+    }
+
+    .pixel-ground {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(124, 108, 240, 0.14) 0 16px,
+          rgba(90, 77, 184, 0.1) 16px 32px);
+      border-top: 4px solid rgba(124, 108, 240, 0.2);
+      mask-image: linear-gradient(to top, black 30%, transparent 100%);
+    }
+
+    .pixel-sprite {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      opacity: 0.22;
+      image-rendering: pixelated;
+      animation: pixelFloat 6s ease-in-out infinite;
+    }
+
+    .pixel-sprite.lg { width: 64px; height: 64px; opacity: 0.18; }
+    .pixel-sprite.sm { width: 36px; height: 36px; opacity: 0.26; }
+
+    .pixel-sprite.ps-1 { top: 12%; left: 6%; animation-delay: 0s; }
+    .pixel-sprite.ps-2 { top: 22%; right: 8%; animation-delay: -1.2s; }
+    .pixel-sprite.ps-3 { top: 48%; left: 4%; animation-delay: -2.4s; }
+    .pixel-sprite.ps-4 { top: 38%; right: 5%; animation-delay: -0.8s; }
+    .pixel-sprite.ps-5 { top: 68%; left: 10%; animation-delay: -3s; }
+    .pixel-sprite.ps-6 { top: 58%; right: 12%; animation-delay: -1.8s; }
+    .pixel-sprite.ps-7 { top: 78%; left: 22%; animation-delay: -2s; }
+    .pixel-sprite.ps-8 { top: 18%; left: 42%; animation-delay: -4s; opacity: 0.14; }
+    .pixel-sprite.ps-9 { top: 72%; right: 28%; animation-delay: -2.6s; }
+    .pixel-sprite.ps-10 { top: 85%; right: 6%; animation-delay: -1s; }
+
+    @keyframes pixelFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(2deg); }
+    }
+
+    @keyframes pixelBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @media (max-width: 768px) {
+      .pixel-sprite.ps-3,
+      .pixel-sprite.ps-5,
+      .pixel-sprite.ps-7,
+      .pixel-sprite.ps-8,
+      .pixel-sprite.ps-9 { display: none; }
+      .pixel-sprite { opacity: 0.16; }
+      .pixel-ground { height: 48px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pixel-sprite { animation: none; }
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NAV ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(12, 10, 20, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo .prompt { color: var(--accent); font-weight: 800; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    .nav-links .nav-cta {
+      border: 1px solid var(--border-strong);
+      padding: 8px 18px;
+      border-radius: 8px;
+      color: var(--text);
+      background: rgba(124, 108, 240, 0.12);
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .footer-socials a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(124, 108, 240, 0.12);
+    }
+
+    /* ===== HERO ===== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 100px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .hero-orb-1 {
+      width: 480px; height: 480px;
+      background: rgba(124, 108, 240, 0.2);
+      top: -120px; right: -80px;
+    }
+
+    .hero-orb-2 {
+      width: 360px; height: 360px;
+      background: rgba(0, 212, 255, 0.12);
+      bottom: 10%; left: -60px;
+    }
+
+    .hero-orb-3 {
+      width: 280px; height: 280px;
+      background: rgba(224, 86, 253, 0.1);
+      top: 40%; right: 20%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(124, 108, 240, 0.15);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .boot-line { display: none; }
+
+    .hero-brand {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 8vw, 80px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s forwards;
+    }
+
+    .hero-brand .glitch {
+      background: linear-gradient(135deg, var(--accent), var(--cyan), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      min-height: 1.6em;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+
+    .hero-role .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    .hero-tagline {
+      max-width: 560px;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.55s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.7s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9b8aff);
+      color: #fff;
+      box-shadow: var(--glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(124, 108, 240, 0.45);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border-strong);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(124, 108, 240, 0.12);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .hero-status {
+      position: relative;
+      margin-top: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-muted);
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s 1s forwards;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    /* ===== GAME PANEL / CARD ===== */
+    .term {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .term-bar {
+      display: none;
+    }
+
+    .term-body { padding: 28px; }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    section:nth-child(even of .page-section) {
+      background: var(--bg2);
+    }
+
+    .section-cmd {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+      background: rgba(124, 108, 240, 0.12);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .section-cmd .prompt,
+    .section-cmd .path { display: none; }
+
+    .section-cmd .cmd {
+      color: var(--cyan);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--bg2); }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .profile-wrap {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .profile-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--border-strong);
+      box-shadow: 0 0 24px rgba(124, 108, 240, 0.25);
+    }
+
+    .profile-ring {
+      position: absolute;
+      inset: -10px;
+      border: 2px solid transparent;
+      border-top-color: var(--accent);
+      border-right-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 8s linear infinite;
+    }
+
+    .profile-label {
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .meta-item {
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      background: rgba(124, 108, 240, 0.02);
+    }
+
+    .meta-key {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .meta-val {
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ===== SKILLS ===== */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .skill-cat {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 22px 24px;
+      transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .skill-cat:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+
+    .skill-cat-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--cyan);
+      font-weight: 500;
+    }
+
+    .skill-cat-head .folder { color: var(--amber); }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(124, 108, 240, 0.12);
+    }
+
+    .tree {
+      font-size: 14px;
+      line-height: 2;
+      color: var(--text-muted);
+      font-family: var(--font);
+    }
+
+    .tree .dir { color: var(--cyan); }
+    .tree .file { color: var(--text); }
+    .tree .branch { color: var(--text-dim); }
+
+    /* ===== PROJECTS ===== */
+    #projects { background: var(--bg2); }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .project:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .project-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .project-id {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--pink);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .project-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-strong);
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    .project-body {
+      padding: 14px 24px 22px;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stack-tag {
+      font-size: 10px;
+      padding: 4px 10px;
+      background: rgba(61, 232, 200, 0.08);
+      border: 1px solid rgba(61, 232, 200, 0.25);
+      color: var(--cyan);
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    #experience { background: var(--bg); }
+
+    .exp-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .exp-date {
+      font-size: 12px;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+    }
+
+    .exp-list {
+      margin-top: 20px;
+      list-style: none;
+    }
+
+    .exp-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .exp-list li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ===== CERTS + EDU ===== */
+    #certs { background: var(--bg2); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .cert-list {
+      list-style: none;
+    }
+
+    .cert-list li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .cert-list li:last-child { border-bottom: none; }
+
+    .cert-icon {
+      color: var(--accent);
+      font-size: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .cert-org {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .cert-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 22px 24px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+
+    .cert-card-icon {
+      color: var(--accent);
+      font-size: 14px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .cert-card .cert-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .cert-card .cert-org {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .edu-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .resume-cta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+    }
+
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: all 0.25s;
+      min-width: 200px;
+    }
+
+    .btn-resume-solid {
+      background: linear-gradient(135deg, var(--accent), #9b8aff);
+      color: #fff;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      box-shadow: var(--glow);
+    }
+
+    .btn-resume-solid:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(124, 108, 240, 0.45);
+      color: #fff;
+    }
+
+    .btn-resume-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+    }
+
+    .btn-resume-outline:hover {
+      background: rgba(124, 108, 240, 0.12);
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .resume-close {
+      display: none;
+    }
+
+    .edu-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 12px;
+      background: var(--panel);
+    }
+
+    .edu-degree {
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .edu-years {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg); padding-bottom: 120px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact-message {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-message-hint {
+      font-size: 11px;
+      color: var(--text-dim);
+      max-width: 260px;
+      line-height: 1.5;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 8px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .contact-row:first-child { border-top: 1px solid var(--border); }
+
+    a.contact-row:hover {
+      color: var(--accent);
+      padding-left: 6px;
+    }
+
+    .contact-key {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      min-width: 72px;
+    }
+
+    .contact-val { font-size: 13px; color: inherit; }
+
+    .contact-form {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 28px;
+    }
+
+    .form-field { margin-bottom: 16px; }
+
+    .form-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 14px;
+      font-family: var(--font);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus { border-color: var(--accent); }
+    .form-control::placeholder { color: var(--text-dim); }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      background: var(--bg2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer-brand { color: var(--text); font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      .about-layout { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .about-text { text-align: left; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .contact-message { align-items: stretch; }
+      .contact-message .btn-resume { width: 100%; }
+      .profile-wrap { margin: 0 auto; }
+      .profile-label { text-align: center; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .edu-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 64px 0 0 0;
+        background: rgba(12, 10, 20, 0.97);
+        padding: 40px 24px;
+        gap: 20px;
+        z-index: 999;
+        align-items: flex-start;
+      }
+      .nav-links.open a { font-size: 18px; font-weight: 600; }
+      .hamburger { display: flex; }
+      .hero-status { display: none; }
+      section { padding: 72px 0; }
+      .exp-card, .contact-form, .term-body { padding: 20px; }
+      .project-head, .project-body { padding-left: 18px; padding-right: 18px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-item { min-height: 260px; }
+      .port-title { font-size: 22px; }
+    }
+
+    /* ===== CREATIVE PORTFOLIO ===== */
+    #portfolio { background: var(--bg); }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(124, 108, 240, 0.15);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      min-height: 300px;
+      cursor: pointer;
+      transition: border-color 0.3s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .portfolio-item:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.55) saturate(0.7);
+      transition: transform 0.6s ease, filter 0.4s;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.4) saturate(0.6);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(12,10,20,0.95) 0%, rgba(12,10,20,0.35) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .port-cat {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .port-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .port-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 420px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.35s;
+    }
+
+    .portfolio-item:hover .port-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .port-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--cyan);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.35s 0.05s;
+      pointer-events: auto;
+    }
+
+    .portfolio-item:hover .port-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal */
+    #projectModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(5, 8, 6, 0.96);
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+    }
+
+    #modalClose {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 9001;
+      font-family: var(--font);
+      transition: all 0.2s;
+    }
+
+    #modalClose:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .modal-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+
+    #modalCat {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    #modalTitle {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 8px 0 36px;
+      color: var(--text);
+    }
+
+    #modalGrid {
+      columns: 2;
+      column-gap: 14px;
+    }
+
+    #modalGrid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 14px;
+      break-inside: avoid;
+      border: 1px solid var(--border);
+    }
+
+    #modalGrid.detail-mode {
+      columns: 1;
+    }
+
+    .cs-subtitle {
+      color: var(--cyan);
+      font-size: 14px;
+      margin: -24px 0 28px;
+      line-height: 1.6;
+    }
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .cs-meta-item {
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      background: rgba(124, 108, 240, 0.03);
+    }
+
+    .cs-meta-key {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .cs-meta-val {
+      font-size: 13px;
+      color: var(--accent);
+      line-height: 1.4;
+    }
+
+    .cs-lead {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.85;
+      margin-bottom: 36px;
+    }
+
+    .cs-block {
+      margin-bottom: 36px;
+    }
+
+    .cs-block h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-block h3::before {
+      content: '▸';
+      color: var(--accent);
+    }
+
+    .cs-block p {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .cs-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cs-steps li {
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      background: var(--panel);
+    }
+
+    .cs-steps strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .cs-steps span {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .cs-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .cs-feature {
+      border: 1px solid var(--border);
+      padding: 18px;
+      background: var(--panel);
+    }
+
+    .cs-feature h4 {
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .cs-feature p {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .cs-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cs-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .cs-stat {
+      border: 1px solid var(--border-strong);
+      padding: 20px 16px;
+      text-align: center;
+      background: rgba(124, 108, 240, 0.04);
+    }
+
+    .cs-stat-val {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .cs-stat-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .cs-stat-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .cs-poster {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      width: 100%;
+      display: block;
+    }
+
+    .cs-shots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .cs-shot {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .cs-shot img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border: none !important;
+      margin: 0 !important;
+    }
+
+    .cs-shot-cap {
+      padding: 8px 10px;
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.3px;
+      border-top: 1px solid var(--border);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .cs-shots { grid-template-columns: repeat(2, 1fr); }
+      .cs-shot img { height: 100px; }
+    }
+
+    @media (max-width: 480px) {
+      .cs-shots { grid-template-columns: 1fr 1fr; }
+    }
+
+    .cs-pipeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .cs-pipe {
+      border: 1px solid var(--border);
+      padding: 14px;
+      background: var(--panel);
+    }
+
+    .cs-pipe-num {
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .cs-pipe strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .cs-pipe span {
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .cs-pipeline { grid-template-columns: 1fr 1fr; }
+    }
+
+    .cs-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 10px 18px;
+      border: 1px solid var(--border-strong);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .cs-download:hover {
+      background: rgba(124, 108, 240, 0.08);
+      color: var(--accent);
+    }
+
+    .project.clickable {
+      cursor: pointer;
+    }
+
+    .project.clickable:hover {
+      border-color: var(--border-strong);
+    }
+
+    .project-cta {
+      display: inline-flex;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+
+    @media (max-width: 768px) {
+      #modalGrid { columns: 1; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-features { grid-template-columns: 1fr; }
+      .cs-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pixel game background -->
+  <div class="pixel-bg" aria-hidden="true">
+    <div class="pixel-grid"></div>
+    <div class="pixel-ground"></div>
+
+    <!-- Coin -->
+    <svg class="pixel-sprite sm ps-1" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="5" y="2" width="6" height="12" fill="#b8860b"/>
+      <rect x="4" y="3" width="8" height="10" fill="#ffd54f"/>
+      <rect x="6" y="5" width="4" height="6" fill="#fff59d" opacity="0.6"/>
+      <rect x="5" y="4" width="1" height="1" fill="#fff" opacity="0.5"/>
+    </svg>
+
+    <!-- Star -->
+    <svg class="pixel-sprite ps-2" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="7" y="1" width="2" height="2" fill="#ffd54f"/>
+      <rect x="5" y="3" width="6" height="2" fill="#ffd54f"/>
+      <rect x="3" y="5" width="10" height="2" fill="#ffb300"/>
+      <rect x="5" y="7" width="2" height="4" fill="#ffb300"/>
+      <rect x="9" y="7" width="2" height="4" fill="#ffb300"/>
+      <rect x="1" y="5" width="2" height="2" fill="#ffd54f"/>
+      <rect x="13" y="5" width="2" height="2" fill="#ffd54f"/>
+      <rect x="6" y="11" width="4" height="2" fill="#ff8f00"/>
+    </svg>
+
+    <!-- Question block -->
+    <svg class="pixel-sprite lg ps-3" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect width="16" height="16" fill="#c45c26"/>
+      <rect x="1" y="1" width="14" height="14" fill="#e88b3a"/>
+      <rect x="2" y="2" width="12" height="2" fill="#f5a623"/>
+      <rect x="2" y="2" width="2" height="12" fill="#f5a623"/>
+      <rect x="6" y="5" width="4" height="2" fill="#5d3a1a"/>
+      <rect x="7" y="7" width="2" height="2" fill="#5d3a1a"/>
+      <rect x="6" y="9" width="2" height="2" fill="#5d3a1a"/>
+      <rect x="8" y="11" width="2" height="2" fill="#5d3a1a"/>
+    </svg>
+
+    <!-- Heart -->
+    <svg class="pixel-sprite sm ps-4" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="3" y="4" width="4" height="2" fill="#e056fd"/>
+      <rect x="9" y="4" width="4" height="2" fill="#e056fd"/>
+      <rect x="2" y="6" width="12" height="2" fill="#e056fd"/>
+      <rect x="2" y="8" width="12" height="2" fill="#c218b8"/>
+      <rect x="3" y="10" width="10" height="2" fill="#c218b8"/>
+      <rect x="4" y="12" width="8" height="2" fill="#9c1796"/>
+      <rect x="6" y="14" width="4" height="1" fill="#9c1796"/>
+    </svg>
+
+    <!-- Game controller -->
+    <svg class="pixel-sprite ps-5" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="2" y="5" width="12" height="6" fill="#4a4568"/>
+      <rect x="1" y="6" width="14" height="4" fill="#6b6594"/>
+      <rect x="4" y="7" width="2" height="2" fill="#2a2640"/>
+      <rect x="10" y="7" width="2" height="2" fill="#2a2640"/>
+      <rect x="6" y="8" width="4" height="1" fill="#2a2640"/>
+      <rect x="0" y="7" width="2" height="2" fill="#7c6cf0"/>
+      <rect x="14" y="7" width="2" height="2" fill="#7c6cf0"/>
+      <rect x="7" y="4" width="2" height="2" fill="#00d4ff"/>
+    </svg>
+
+    <!-- Gem -->
+    <svg class="pixel-sprite sm ps-6" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="7" y="2" width="2" height="2" fill="#00d4ff"/>
+      <rect x="5" y="4" width="6" height="2" fill="#00b8d4"/>
+      <rect x="3" y="6" width="10" height="2" fill="#00d4ff"/>
+      <rect x="4" y="8" width="8" height="2" fill="#0097a7"/>
+      <rect x="5" y="10" width="6" height="2" fill="#006978"/>
+      <rect x="6" y="12" width="4" height="2" fill="#004d5a"/>
+      <rect x="6" y="5" width="1" height="1" fill="#b2ebf2"/>
+    </svg>
+
+    <!-- Cloud -->
+    <svg class="pixel-sprite lg ps-7" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="4" y="6" width="8" height="4" fill="#8b9dc8" opacity="0.7"/>
+      <rect x="2" y="8" width="12" height="4" fill="#a8b8d8" opacity="0.6"/>
+      <rect x="3" y="5" width="4" height="3" fill="#c5d0e8" opacity="0.5"/>
+      <rect x="9" y="5" width="4" height="3" fill="#c5d0e8" opacity="0.5"/>
+    </svg>
+
+    <!-- Mushroom -->
+    <svg class="pixel-sprite ps-8" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="4" y="2" width="8" height="2" fill="#e53935"/>
+      <rect x="3" y="4" width="10" height="4" fill="#ef5350"/>
+      <rect x="5" y="3" width="2" height="2" fill="#fff"/>
+      <rect x="9" y="5" width="2" height="2" fill="#fff"/>
+      <rect x="6" y="8" width="4" height="6" fill="#ffe0b2"/>
+      <rect x="7" y="8" width="2" height="2" fill="#ffcc80"/>
+    </svg>
+
+    <!-- Sword -->
+    <svg class="pixel-sprite sm ps-9" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="7" y="1" width="2" height="8" fill="#b0bec5"/>
+      <rect x="8" y="2" width="1" height="6" fill="#eceff1"/>
+      <rect x="5" y="9" width="6" height="2" fill="#8d6e63"/>
+      <rect x="6" y="11" width="4" height="2" fill="#6d4c41"/>
+      <rect x="7" y="13" width="2" height="2" fill="#ffd54f"/>
+    </svg>
+
+    <!-- Potion -->
+    <svg class="pixel-sprite sm ps-10" viewBox="0 0 16 16" shape-rendering="crispEdges">
+      <rect x="6" y="2" width="4" height="2" fill="#8d6e63"/>
+      <rect x="7" y="1" width="2" height="1" fill="#a1887f"/>
+      <rect x="5" y="4" width="6" height="2" fill="#7c6cf0"/>
+      <rect x="4" y="6" width="8" height="6" fill="#5e35b1"/>
+      <rect x="5" y="7" width="2" height="3" fill="#b39ddb" opacity="0.6"/>
+      <rect x="5" y="12" width="6" height="2" fill="#4527a0"/>
+    </svg>
+  </div>
+
+  <header>
+    <nav>
+      <a href="#home" class="logo"><span class="prompt">PR</span> Peniel Rocha</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#portfolio">Creative</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certs">Certs</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="wrap hero-content">
+      <p class="hero-badge"><span class="hero-badge-dot"></span> IT Graduate · Open to Opportunities</p>
+      <h1 class="hero-brand">
+        Peniel N.<br>
+        <span class="glitch">Rocha</span>
+      </h1>
+      <p class="hero-role"><span id="typed"></span><span class="cursor-blink"></span></p>
+      <p class="hero-tagline">
+        BSIT graduate building systems, delivering technical support, and integrating machine learning
+        into real projects — from rice quality inspection to mood-based music playlists.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#resume" class="btn btn-ghost">Download Resume</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-status wrap">
+      <span><span class="status-dot"></span>Available for IT roles</span>
+      <span>Quezon City, Novaliches</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Profile</span></div>
+      <h2 class="section-title reveal">About Me</h2>
+      <p class="section-desc reveal">Compassionate, driven, and hands-on across support desks and system builds.</p>
+
+      <div class="about-layout reveal">
+        <div>
+          <div class="profile-wrap">
+            <div class="profile-ring"></div>
+            <img src="images/profile.png?v=2" alt="Peniel N. Rocha">
+          </div>
+          <p class="profile-label">Information Technology</p>
+        </div>
+        <div class="about-text">
+          <div class="term">
+            <div class="term-body">
+              <p>
+                Compassionate and highly driven individual with experience in technical support,
+                system troubleshooting, software deployment, and IT operations. Skilled in Python,
+                Java, JavaScript, web development, database management, and machine learning
+                integration, with hands-on experience gained through academic and technical projects.
+              </p>
+              <div class="meta-grid">
+                <div class="meta-item">
+                  <div class="meta-key">Born</div>
+                  <div class="meta-val">Jan 22, 2002</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-key">Languages</div>
+                  <div class="meta-val">English, Filipino</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-key">Nationality</div>
+                  <div class="meta-val">Filipino</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Skills</span></div>
+      <h2 class="section-title reveal">Skills</h2>
+      <p class="section-desc reveal">Toolchain mapped like a directory — click around the stack.</p>
+
+      <div class="skills-grid reveal">
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> Programming</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> Web Development</div>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">React</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> Networking</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Network Troubleshooting</span>
+            <span class="skill-tag">IP Configuration</span>
+            <span class="skill-tag">Routing &amp; Switching</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> System &amp; AI</div>
+          <div class="skill-tags">
+            <span class="skill-tag">ML Integration</span>
+            <span class="skill-tag">System Testing</span>
+            <span class="skill-tag">System Deployment</span>
+            <span class="skill-tag">Image Annotation</span>
+            <span class="skill-tag">Train / Fine-tune Models</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> IT Support</div>
+          <div class="skill-tags">
+            <span class="skill-tag">System Diagnostics</span>
+            <span class="skill-tag">HW / SW Troubleshooting</span>
+            <span class="skill-tag">Windows / macOS</span>
+            <span class="skill-tag">Hardware Maintenance</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-head"><span class="folder">▸</span> Creative Skills</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Photography</span>
+            <span class="skill-tag">Videography</span>
+            <span class="skill-tag">Video Editing</span>
+            <span class="skill-tag">Audio Mixing</span>
+            <span class="skill-tag">Musician</span>
+            <span class="skill-tag">Graphic Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="term reveal" style="margin-top:24px;">
+        <div class="term-body tree">
+          <p style="font-weight:600;color:var(--text);margin-bottom:12px;">Tech Stack Overview</p>
+          <div><span class="branch">•</span> <span class="dir">Languages:</span> <span class="file">Python · C/C++ · Java · JavaScript</span></div>
+          <div><span class="branch">•</span> <span class="dir">Web:</span> <span class="file">HTML · CSS · PHP · Bootstrap · React</span></div>
+          <div><span class="branch">•</span> <span class="dir">Networking:</span> <span class="file">Troubleshooting · IP · Routing/Switching</span></div>
+          <div><span class="branch">•</span> <span class="dir">AI / ML:</span> <span class="file">YOLOv8 · OpenCV · TensorFlow · PyTorch</span></div>
+          <div><span class="branch">•</span> <span class="dir">IT Ops:</span> <span class="file">Diagnostics · Imaging · Documentation</span></div>
+          <div><span class="branch">•</span> <span class="dir">Creative:</span> <span class="file">Photo · Video · Design · Audio</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Projects</span></div>
+      <h2 class="section-title reveal">System Development</h2>
+      <p class="section-desc reveal">Academic and technical builds — detection, recommendation, and resource systems.</p>
+
+      <div class="projects-list">
+        <article class="project reveal clickable" data-project="grainscan" role="button" tabindex="0">
+          <div class="project-head">
+            <div>
+              <div class="project-id">Capstone · 01</div>
+              <h3 class="project-name">GRAINSCAN</h3>
+            </div>
+            <span class="project-badge">AI / Computer Vision</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Automated Rice Quality Inspection with Image Processing &amp; Data Analytics —
+              YOLOv8 instance segmentation that grades samples High / Medium / Low.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">YOLOv8</span>
+              <span class="stack-tag">OpenCV</span>
+              <span class="stack-tag">Tkinter</span>
+            </div>
+            <span class="project-cta">View case study →</span>
+          </div>
+        </article>
+
+        <article class="project reveal clickable" data-project="moodsync" role="button" tabindex="0">
+          <div class="project-head">
+            <div>
+              <div class="project-id">AI System · 02</div>
+              <h3 class="project-name">MoodSync AI</h3>
+            </div>
+            <span class="project-badge">ML / Web App</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Emotion-Based Spotify Playlist Generator — CNN facial emotion detection
+              mapped to Spotify audio features for mood-matched playlists.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Flask</span>
+              <span class="stack-tag">TensorFlow</span>
+              <span class="stack-tag">Spotify API</span>
+            </div>
+            <span class="project-cta">View case study →</span>
+          </div>
+        </article>
+
+        <article class="project reveal clickable" data-project="library" role="button" tabindex="0">
+          <div class="project-head">
+            <div>
+              <div class="project-id">Web System · 03</div>
+              <h3 class="project-name">Barcode Library System</h3>
+            </div>
+            <span class="project-badge">System Development</span>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Enhancing Accessibility and Efficiency in Resource Management —
+              OLFU LRC Quezon City barcode kiosk for student check-in and activity logging.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">PHP</span>
+              <span class="stack-tag">MySQL</span>
+              <span class="stack-tag">HTML / CSS</span>
+              <span class="stack-tag">JavaScript</span>
+            </div>
+            <span class="project-cta">View case study →</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATIVE PORTFOLIO -->
+  <section id="portfolio" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Creative Work</span></div>
+      <h2 class="section-title reveal">Creative Work</h2>
+      <p class="section-desc reveal">Graphic design, video edits, web layouts, and Android builds — side stack beyond systems.</p>
+
+      <div class="filter-group reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="design">Graphic Design</button>
+        <button class="filter-btn" data-filter="video">Video Edits</button>
+        <button class="filter-btn" data-filter="web">Web Design</button>
+        <button class="filter-btn" data-filter="android">Android</button>
+      </div>
+
+      <div class="portfolio-grid reveal">
+        <div class="portfolio-item" data-category="design" data-project="design">
+          <img src="images/post/1.jpg" alt="Graphic Designs">
+          <div class="portfolio-overlay">
+            <span class="port-cat">Graphic Design</span>
+            <h3 class="port-title">Graphic Designs</h3>
+            <p class="port-desc">Brand and digital designs crafted for clients — posters, posts, and visual identity work.</p>
+            <a href="#" class="port-link open-modal" data-project="design">View gallery →</a>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="video" data-project="video">
+          <img src="images/vid/deb.png" alt="Video Edits">
+          <div class="portfolio-overlay">
+            <span class="port-cat">Video Editing</span>
+            <h3 class="port-title">Video Edits</h3>
+            <p class="port-desc">Event and promotional edits — motion, story, pacing, and rhythm.</p>
+            <a href="#" class="port-link open-modal" data-project="video">View gallery →</a>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="web" data-project="web">
+          <img src="images/web/web.png" alt="Website Designs">
+          <div class="portfolio-overlay">
+            <span class="port-cat">Web Design</span>
+            <h3 class="port-title">Website Designs</h3>
+            <p class="port-desc">Custom websites focused on clean layout, responsive design, and user experience.</p>
+            <a href="#" class="port-link open-modal" data-project="web">View gallery →</a>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="android" data-project="android">
+          <img src="images/android/an1.png" alt="Android Apps">
+          <div class="portfolio-overlay">
+            <span class="port-cat">Android Development</span>
+            <h3 class="port-title">Android Apps</h3>
+            <p class="port-desc">Mobile applications designed and developed end-to-end for Android.</p>
+            <a href="#" class="port-link open-modal" data-project="android">View gallery →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Experience</span></div>
+      <h2 class="section-title reveal">Internship</h2>
+      <p class="section-desc reveal">Field time on the helpdesk — diagnose, image, configure, document.</p>
+
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div>
+            <h3 class="exp-role">Technical Support Intern</h3>
+            <p class="exp-company">Ttec</p>
+          </div>
+          <span class="exp-date">Jan 2026 — May 2026</span>
+        </div>
+        <ul class="exp-list">
+          <li>Provided technical assistance for hardware, software, and network issues</li>
+          <li>Diagnosed operating system and application problems across endpoints</li>
+          <li>Performed system re-imaging and software installation on Windows</li>
+          <li>Configured workstations and supported network connectivity troubleshooting</li>
+          <li>Maintained technical documentation and collaborated with IT personnel</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS + EDUCATION + RESUME -->
+  <section id="certs" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Certifications</span></div>
+      <h2 class="section-title reveal">Certifications</h2>
+      <p class="section-desc reveal">Credentials earned — Cisco, Python, and analytics.</p>
+
+      <div class="certs-grid reveal">
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">CCNA: Switching, Routing, and Wireless Essentials</div>
+          <div class="cert-org">Cisco Networking Academy</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">Cyber Threat Management</div>
+          <div class="cert-org">Cisco Networking Academy</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">Networking Devices and Initial Configuration</div>
+          <div class="cert-org">Cisco Networking Academy</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">CCNA: Introduction to Networks</div>
+          <div class="cert-org">Cisco Networking Academy</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">Python</div>
+          <div class="cert-org">Information Technology Specialist</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-card-icon">◈</div>
+          <div class="cert-name">Data Analytics Fundamentals</div>
+          <div class="cert-org">DataSense Analytics</div>
+        </div>
+      </div>
+
+      <h2 class="section-title reveal" style="font-size:clamp(22px,4vw,32px); margin-top:16px;">Education</h2>
+      <div class="edu-row reveal">
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor of Science in Information Technology</div>
+          <div class="edu-school">Our Lady of Fatima University</div>
+          <div class="edu-years">2022 — 2026</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Senior High School</div>
+          <div class="edu-school">Our Lady of Fatima University</div>
+          <div class="edu-years">2019 — 2021</div>
+        </div>
+      </div>
+
+      <div id="resume" class="resume-cta reveal">
+        <a href="ROCHA_CV.pdf" class="btn-resume btn-resume-solid" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          View Resume (PDF)
+        </a>
+        <a href="ROCHA_CV.pdf" class="btn-resume btn-resume-outline" id="downloadResume" download="Peniel_N_Rocha_CV.pdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="page-section">
+    <div class="wrap">
+      <div class="section-cmd reveal"><span class="cmd">Contact</span></div>
+      <h2 class="section-title reveal">Get In Touch</h2>
+      <p class="section-desc reveal">Open to IT support, systems development, and technical roles.</p>
+
+      <div class="contact-grid reveal">
+        <div class="contact-links">
+          <a class="contact-row" href="mailto:penieljamesrocha@gmail.com">
+            <span class="contact-key">email</span>
+            <span class="contact-val">penieljamesrocha@gmail.com</span>
+          </a>
+          <a class="contact-row" href="tel:09941466867">
+            <span class="contact-key">phone</span>
+            <span class="contact-val">0994 146 6867</span>
+          </a>
+          <div class="contact-row">
+            <span class="contact-key">location</span>
+            <span class="contact-val">Quezon City, Novaliches</span>
+          </div>
+        </div>
+
+        <div class="contact-message">
+          <a
+            class="btn-resume btn-resume-solid"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=penieljamesrocha@gmail.com&su=Portfolio%20Inquiry"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Message Me
+          </a>
+          <p class="contact-message-hint">Opens Gmail ready to send to penieljamesrocha@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span class="footer-brand">Peniel N. Rocha</span>
+      <span>© 2026 · Information Technology Graduate</span>
+      <div class="footer-socials">
+        <a href="mailto:penieljamesrocha@gmail.com" aria-label="Email">@</a>
+        <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="projectModal">
+    <button id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-inner">
+      <span id="modalCat"></span>
+      <h2 id="modalTitle"></h2>
+      <div id="modalGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    // Typing effect
+    (function () {
+      const el = document.getElementById('typed');
+      const phrases = [
+        'Information Technology Graduate',
+        'Technical Support · Systems · ML',
+        'Python · Java · JavaScript · React',
+        'Graphic Design · Video · Web · Android'
+      ];
+      let pi = 0, ci = 0, deleting = false;
+
+      function tick() {
+        const phrase = phrases[pi];
+        if (!deleting) {
+          el.textContent = phrase.slice(0, ++ci);
+          if (ci === phrase.length) {
+            deleting = true;
+            setTimeout(tick, 1800);
+            return;
+          }
+        } else {
+          el.textContent = phrase.slice(0, --ci);
+          if (ci === 0) {
+            deleting = false;
+            pi = (pi + 1) % phrases.length;
+          }
+        }
+        setTimeout(tick, deleting ? 28 : 55);
+      }
+      tick();
+    })();
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+
+    // Scroll-spy nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(s => spy.observe(s));
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Portfolio filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          const match = filter === 'all' || item.dataset.category === filter;
+          item.style.display = match ? '' : 'none';
+        });
+      });
+    });
+
+    // Creative galleries + case studies modal
+    const projects = {
+      design: {
+        cat: 'Graphic Design',
+        title: 'Graphic Designs',
+        images: [
+          'images/post/1.jpg',
+          'images/post/2.jpg',
+          'images/post/3.jpg',
+          'images/post/4.jpg',
+          'images/post/5.jpg'
+        ]
+      },
+      video: {
+        cat: 'Video Editing',
+        title: 'Video Edits',
+        images: [
+          'images/vid/deb.png',
+          'images/vid/ran.png',
+          'images/vid/val.png',
+          'images/vid/valo.png',
+          'images/vid/wed.png'
+        ]
+      },
+      web: {
+        cat: 'Web Design',
+        title: 'Website Designs',
+        images: [
+          'images/web/mob.png',
+          'images/web/web.png',
+          'images/web/webs.png',
+          'images/web/websi.png'
+        ]
+      },
+      android: {
+        cat: 'Android Development',
+        title: 'Android Apps',
+        images: [
+          'images/android/an1.png',
+          'images/android/an2.png',
+          'images/android/an3.png',
+          'images/android/an4.png',
+          'images/android/an5.png',
+          'images/android/an6.png'
+        ]
+      },
+      grainscan: {
+        type: 'detail',
+        cat: 'AI / Computer Vision',
+        title: 'GrainScan',
+        subtitle: 'Automated Rice Quality Inspection with Image Processing & Data Analytics'
+      },
+      moodsync: {
+        type: 'detail',
+        cat: 'Machine Learning / Web App',
+        title: 'MoodSync AI'
+      },
+      library: {
+        type: 'detail',
+        cat: 'System Development',
+        title: 'Barcode Library System'
+      }
+    };
+
+    const modal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalGrid = document.getElementById('modalGrid');
+
+    function shot(src, cap) {
+      return `<div class="cs-shot"><img src="${src}" alt="${cap}" loading="lazy"><div class="cs-shot-cap">${cap}</div></div>`;
+    }
+
+    function grainscanHTML() {
+      return `
+        <p class="cs-subtitle">Automated Rice Quality Inspection with Image Processing &amp; Data Analytics</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Role</div>
+            <div class="cs-meta-val">Developer &amp; Researcher</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Type</div>
+            <div class="cs-meta-val">Capstone / Thesis</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Year</div>
+            <div class="cs-meta-val">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Stack</div>
+            <div class="cs-meta-val">Python · YOLOv8 · OpenCV · Tkinter</div>
+          </div>
+        </div>
+
+        <p class="cs-lead">
+          GrainScan is an advanced automated rice quality inspection system that uses AI-powered
+          computer vision to analyze rice grain samples. Leveraging YOLOv8 instance segmentation,
+          it detects and classifies individual rice grains, grades samples as High, Medium, or Low
+          quality, and provides comprehensive analytics — reducing human error and supporting
+          informed decision-making in rice production and supply chain management.
+        </p>
+
+        <div class="cs-block">
+          <h3>App Screenshots</h3>
+          <div class="cs-shots">
+            ${shot('images/grainscan/03-scan-home.png', 'Scan Image — Select Image · Live Camera · Batch Scan')}
+            ${shot('images/grainscan/01-scan-report.png', 'Scan Results — Quality Grade, grain stats &amp; distribution chart')}
+            ${shot('images/grainscan/05-analytics.png', 'Analytics Dashboard — KPIs &amp; grain composition overview')}
+            ${shot('images/grainscan/04-finetune.png', 'Fine-Tune Model (YOLOv8) — dataset &amp; weights configuration')}
+            ${shot('images/grainscan/02-model-config.png', 'Model Configuration — choose default YOLO weights')}
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>The Problem</h3>
+          <p>
+            Traditional rice quality inspection relies heavily on manual visual assessment by human
+            inspectors — a process that is slow, subjective, inconsistent, and prone to fatigue-related
+            errors. Rice mills and food processing facilities need a faster, more reliable way to
+            evaluate grain quality at scale to meet industry standards and ensure product consistency.
+          </p>
+          <p>
+            Key challenges included: lack of standardized automated grading, inability to process large
+            batches efficiently, no real-time inspection capability, and the absence of data-driven
+            quality tracking over time.
+          </p>
+        </div>
+
+        <div class="cs-block">
+          <h3>Process &amp; Development</h3>
+          <p>Structured approach combining research, iterative model training, and user-centric GUI design:</p>
+          <ul class="cs-steps">
+            <li>
+              <strong>Research &amp; Planning</strong>
+              <span>Studied rice grain classification standards, reviewed existing quality control methods, and identified key grain categories: Long, Medium, Short, Broken, and Discolored.</span>
+            </li>
+            <li>
+              <strong>Dataset Preparation</strong>
+              <span>Collected and annotated hundreds of rice grain images with precise polygon instance segmentation labels in YOLO format, covering all 5 grain categories.</span>
+            </li>
+            <li>
+              <strong>Model Training</strong>
+              <span>Trained and iteratively fine-tuned YOLOv8 segmentation models through versions V1–V9 to achieve 90%+ detection accuracy across varying rice samples.</span>
+            </li>
+            <li>
+              <strong>Quality Algorithm</strong>
+              <span>Designed a weighted scoring algorithm that considers grain type proportions, defect rates, and dominant grain analysis to produce standardized quality grades.</span>
+            </li>
+            <li>
+              <strong>GUI Development</strong>
+              <span>Built a desktop application with Tkinter — sidebar navigation, progress bars, and interactive result windows for an intuitive user experience.</span>
+            </li>
+            <li>
+              <strong>Analytics Integration</strong>
+              <span>Implemented KPI dashboards, time-range filtering, grain composition charts, and multi-format export (CSV, Excel, PDF).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cs-block">
+          <h3>Key Features</h3>
+          <div class="cs-features">
+            <div class="cs-feature">
+              <h4>Automated Detection</h4>
+              <p>YOLOv8 instance segmentation detects and classifies individual rice grains into 5 categories with color-coded annotations.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Quality Grading</h4>
+              <p>Weighted scoring grades samples as High, Medium, or Low based on dominant grain type and defect thresholds.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Batch Processing</h4>
+              <p>Analyze multiple images simultaneously with combined statistics, individual navigation, and aggregate quality assessment.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Live Camera</h4>
+              <p>Real-time grain capture and analysis using USB webcam, supporting resolutions up to 4K UHD.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Analytics Dashboard</h4>
+              <p>Track premium grains, broken/discolored rates, and quality trends with KPI cards and composition charts.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Multi-Format Export</h4>
+              <p>Export results as CSV, formatted Excel spreadsheets, or professional PDF reports with charts and tables.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Technology Stack</h3>
+          <div class="cs-stack">
+            <span class="stack-tag">Python 3.x</span>
+            <span class="stack-tag">YOLOv8 (Ultralytics)</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Tkinter</span>
+            <span class="stack-tag">Matplotlib</span>
+            <span class="stack-tag">Pandas</span>
+            <span class="stack-tag">Pillow</span>
+            <span class="stack-tag">openpyxl</span>
+            <span class="stack-tag">CUDA (GPU)</span>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Impact &amp; Results</h3>
+          <p>
+            GrainScan shows how AI can turn a manual, subjective quality control process into an
+            automated, data-driven system.
+          </p>
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">1–3s</div>
+              <div class="cs-stat-label">Speed</div>
+              <div class="cs-stat-desc">Per image on GPU vs. minutes of manual inspection</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">90–95%</div>
+              <div class="cs-stat-label">Accuracy</div>
+              <div class="cs-stat-desc">Detection vs. human expert assessment</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">50+</div>
+              <div class="cs-stat-label">Scalability</div>
+              <div class="cs-stat-desc">Samples analyzed in minutes with aggregated analytics</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Research Poster</h3>
+          <img class="cs-poster" src="gscan_poster.png" alt="GrainScan Research Poster">
+          <a class="cs-download" href="gscan_poster.png" download="GrainScan_Poster.png">Download poster</a>
+        </div>
+      `;
+    }
+
+    function moodsyncHTML() {
+      return `
+        <p class="cs-subtitle">Emotion-Based Spotify Playlist Generator</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Role</div>
+            <div class="cs-meta-val">Full-Stack Developer</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Type</div>
+            <div class="cs-meta-val">Academic Project</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Year</div>
+            <div class="cs-meta-val">2025</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Stack</div>
+            <div class="cs-meta-val">Python · Flask · TensorFlow · Spotify API</div>
+          </div>
+        </div>
+
+        <p class="cs-lead">
+          MoodSync is a web application that detects your facial emotion through a webcam and
+          generates a personalized Spotify playlist that matches your current mood. It combines a
+          convolutional neural network (CNN) for real-time facial emotion detection with Spotify's
+          audio features API to find tracks that align with how you're feeling — blending AI
+          intelligence with personal music taste.
+        </p>
+
+        <div class="cs-block">
+          <h3>App Screenshots</h3>
+          <div class="cs-shots">
+            ${shot('images/moodsync/03-landing.png', 'Landing · Login with Spotify')}
+            ${shot('images/moodsync/02-detect.png', 'Detect Emotion &amp; Create Playlist')}
+            ${shot('images/moodsync/01-playlist.png', 'Playlist Created on Spotify')}
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>The Problem</h3>
+          <p>
+            Choosing music that matches your mood can feel like a chore — scrolling through playlists,
+            searching by genre, or relying on generic recommendations. Traditional music recommendation
+            systems rely on listening history alone and don't account for how you actually feel in the moment.
+          </p>
+          <p>
+            The challenge was to create a system that could understand a user's emotional state in
+            real-time and automatically generate a curated playlist that genuinely resonates with their
+            current mood, making the music discovery experience effortless and deeply personal.
+          </p>
+        </div>
+
+        <div class="cs-block">
+          <h3>Process &amp; Development</h3>
+          <p>Multi-phase build combining deep learning, API integration, and web development:</p>
+          <ul class="cs-steps">
+            <li>
+              <strong>Emotion Dataset</strong>
+              <span>Prepared a dataset of 48×48 grayscale facial images organized into 7 emotion categories: Happy, Sad, Angry, Fear, Neutral, Surprise, and Disgust.</span>
+            </li>
+            <li>
+              <strong>CNN Model Training</strong>
+              <span>Trained a convolutional neural network to classify facial emotions from webcam captures, saving the best-performing model for production use.</span>
+            </li>
+            <li>
+              <strong>Emotion-to-Music Mapping</strong>
+              <span>Designed unique audio feature profiles for each emotion — mapping valence, energy, danceability, and tempo to create mood-appropriate playlists.</span>
+            </li>
+            <li>
+              <strong>Spotify API Integration</strong>
+              <span>Integrated Spotify's OAuth flow, top tracks, recently played, and audio features endpoints to source and score tracks against emotion profiles.</span>
+            </li>
+            <li>
+              <strong>Scoring Algorithm</strong>
+              <span>Built a weighted scoring system: 80% mood match (audio features alignment) + 20% personal taste (from user's listening history) for optimal recommendations.</span>
+            </li>
+            <li>
+              <strong>Web Interface</strong>
+              <span>Created a retro-wave themed Flask web app with Spotify login, live webcam preview, emotion detection, and embedded playlist playback.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cs-block">
+          <h3>How It Works</h3>
+          <p>End-to-end pipeline from emotion capture to playlist generation:</p>
+          <div class="cs-pipeline">
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">01</div>
+              <strong>Capture</strong>
+              <span>Webcam captures an image of your face through the browser.</span>
+            </div>
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">02</div>
+              <strong>Detect</strong>
+              <span>CNN analyzes the image and classifies emotion into one of 7 categories.</span>
+            </div>
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">03</div>
+              <strong>Map</strong>
+              <span>Emotion maps to target audio features (valence, energy, tempo, danceability).</span>
+            </div>
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">04</div>
+              <strong>Source</strong>
+              <span>Searches Spotify top tracks, recent plays, favorite artists, and keyword queries.</span>
+            </div>
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">05</div>
+              <strong>Score</strong>
+              <span>Each track: 80% audio feature match + 20% personal taste weighting.</span>
+            </div>
+            <div class="cs-pipe">
+              <div class="cs-pipe-num">06</div>
+              <strong>Generate</strong>
+              <span>Top-scoring tracks compiled into a playlist on your Spotify account.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Supported Emotions &amp; Music Profiles</h3>
+          <div class="cs-features">
+            <div class="cs-feature">
+              <h4>Happy</h4>
+              <p>Upbeat, high-energy, danceable tracks with fast tempo (100–180 BPM) and high valence.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Sad</h4>
+              <p>Slow, mellow, reflective tracks with low energy and slower tempo (60–100 BPM).</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Angry</h4>
+              <p>Intense, loud, high-energy tracks with fast tempo (120–180 BPM).</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Fear</h4>
+              <p>Atmospheric, instrumental, ambient tracks with low valence and a cinematic feel.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Neutral</h4>
+              <p>Balanced, easy-listening music with moderate valence and tempo (90–130 BPM).</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Surprise</h4>
+              <p>Energetic, electronic, uplifting tracks with high valence and varied genres.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Technology Stack</h3>
+          <div class="cs-stack">
+            <span class="stack-tag">Python 3.x</span>
+            <span class="stack-tag">Flask 3.0</span>
+            <span class="stack-tag">TensorFlow 2.18</span>
+            <span class="stack-tag">OpenCV</span>
+            <span class="stack-tag">Spotipy (Spotify API)</span>
+            <span class="stack-tag">NumPy</span>
+            <span class="stack-tag">CNN (Deep Learning)</span>
+            <span class="stack-tag">HTML / CSS / JS</span>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Impact &amp; Key Takeaways</h3>
+          <p>
+            MoodSync shows how computer vision, deep learning, and third-party APIs combine into a
+            cohesive, user-friendly experience.
+          </p>
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">Local</div>
+              <div class="cs-stat-label">Privacy First</div>
+              <div class="cs-stat-desc">Emotion detection runs locally — no webcam images uploaded or stored</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">80/20</div>
+              <div class="cs-stat-label">Personalization</div>
+              <div class="cs-stat-desc">Mood match + listening history for personal recommendations</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">20–30</div>
+              <div class="cs-stat-label">Diversity</div>
+              <div class="cs-stat-desc">Tracks per playlist with artist limits for variety</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function libraryHTML() {
+      return `
+        <p class="cs-subtitle">Enhancing Accessibility and Efficiency in Resource Management</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Role</div>
+            <div class="cs-meta-val">System Developer</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Type</div>
+            <div class="cs-meta-val">Academic Project</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Year</div>
+            <div class="cs-meta-val">2024</div>
+          </div>
+          <div class="cs-meta-item">
+            <div class="cs-meta-key">Stack</div>
+            <div class="cs-meta-val">PHP · MySQL · HTML/CSS · JavaScript</div>
+          </div>
+        </div>
+
+        <p class="cs-lead">
+          A library management system built for the Learning Resource Center at Our Lady of Fatima
+          University — Quezon City Campus. The system integrates barcode scanning to automate student
+          check-in, activity logging, and resource tracking, replacing manual sign-in sheets with a
+          fast, self-service kiosk that reduces wait times and gives staff accurate usage data.
+        </p>
+
+        <div class="cs-block">
+          <h3>App Screenshots</h3>
+          <div class="cs-shots">
+            ${shot('images/library/02-scan.png', 'Kiosk — Scan Your ID Barcode')}
+            ${shot('images/library/01-activity.png', 'Check-in — Choose Activity')}
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>The Problem</h3>
+          <p>
+            The Learning Resource Center relied on manual logbooks and paper-based sign-in processes.
+            Students queued to write their names, IDs, and visit purposes — a slow workflow that
+            created bottlenecks during peak hours and made it difficult for staff to track who was
+            using which resources.
+          </p>
+          <p>
+            Library staff also lacked real-time visibility into facility usage patterns, making it
+            hard to plan staffing, monitor room occupancy, and generate accurate reports for resource
+            management.
+          </p>
+        </div>
+
+        <div class="cs-block">
+          <h3>Process &amp; Development</h3>
+          <p>
+            Designed around a two-step kiosk flow — scan first, then select an activity — keeping the
+            interface simple enough for any student to use without assistance:
+          </p>
+          <ul class="cs-steps">
+            <li>
+              <strong>Barcode Integration</strong>
+              <span>Connected USB barcode scanners to read student ID barcodes and instantly retrieve profile data from the database.</span>
+            </li>
+            <li>
+              <strong>Kiosk Interface</strong>
+              <span>Built a full-screen kiosk UI with university branding, a live clock, and a clear "Scan Your ID Barcode" prompt for self-service entry.</span>
+            </li>
+            <li>
+              <strong>Activity Logging</strong>
+              <span>After scanning, students choose from 11 activity types — study, computer access, book borrowing, discussion room use, and more.</span>
+            </li>
+            <li>
+              <strong>Database Design</strong>
+              <span>Structured MySQL tables for students, visits, activities, and timestamps to support reporting and audit trails.</span>
+            </li>
+            <li>
+              <strong>Student Verification</strong>
+              <span>Displays a personalized welcome screen with the student's name after a successful scan, confirming identity before activity selection.</span>
+            </li>
+            <li>
+              <strong>Usage Reporting</strong>
+              <span>Enables staff to generate usage reports by date, activity type, and student — replacing manual tallying from logbooks.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cs-block">
+          <h3>Key Features</h3>
+          <div class="cs-features">
+            <div class="cs-feature">
+              <h4>Instant ID Scan</h4>
+              <p>Barcode scanner reads student IDs in seconds — no typing, no manual lookup required.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>11 Activity Types</h4>
+              <p>Covers study, computer/internet access, book borrow/return, class activity, research, discussion room, and more.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Timestamped Records</h4>
+              <p>Every visit is logged with date and time for accurate attendance and usage tracking.</p>
+            </div>
+            <div class="cs-feature">
+              <h4>Campus Branding</h4>
+              <p>Interface styled with OLFU colors and crest for a professional, on-brand kiosk experience.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Technology Stack</h3>
+          <div class="cs-stack">
+            <span class="stack-tag">PHP</span>
+            <span class="stack-tag">MySQL</span>
+            <span class="stack-tag">HTML5 / CSS3</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">Barcode Scanner API</span>
+            <span class="stack-tag">XAMPP</span>
+          </div>
+        </div>
+
+        <div class="cs-block">
+          <h3>Impact &amp; Results</h3>
+          <p>
+            The Barcode Library System modernized daily operations at the Learning Resource Center,
+            delivering measurable improvements for both students and staff.
+          </p>
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">Seconds</div>
+              <div class="cs-stat-label">Faster Check-In</div>
+              <div class="cs-stat-desc">Barcode scan instead of filling out paper forms</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">Fewer</div>
+              <div class="cs-stat-label">Errors</div>
+              <div class="cs-stat-desc">No illegible handwriting or duplicate manual entries</div>
+            </div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">Clear</div>
+              <div class="cs-stat-label">Insights</div>
+              <div class="cs-stat-desc">Usage patterns and reports for better resource allocation</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    const detailRenderers = {
+      grainscan: grainscanHTML,
+      moodsync: moodsyncHTML,
+      library: libraryHTML
+    };
+
+    function openModal(projectKey) {
+      const p = projects[projectKey];
+      if (!p) return;
+      document.getElementById('modalCat').textContent = p.cat;
+      document.getElementById('modalTitle').textContent = p.title;
+
+      if (p.type === 'detail' && detailRenderers[projectKey]) {
+        modalGrid.classList.add('detail-mode');
+        modalGrid.innerHTML = detailRenderers[projectKey]();
+      } else {
+        modalGrid.classList.remove('detail-mode');
+        modalGrid.innerHTML = (p.images || [])
+          .map(src => `<img src="${src}" alt="${p.title}" loading="lazy">`)
+          .join('');
+      }
+
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      modal.scrollTop = 0;
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.open-modal').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(btn.dataset.project);
+      });
+    });
+
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('click', () => openModal(item.dataset.project));
+    });
+
+    document.querySelectorAll('.project.clickable').forEach(item => {
+      item.addEventListener('click', () => openModal(item.dataset.project));
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(item.dataset.project);
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Force resume PDF download
+    document.getElementById('downloadResume').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = 'ROCHA_CV.pdf';
+      const filename = 'Peniel_N_Rocha_CV.pdf';
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Failed to fetch resume');
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1500);
+      } catch (err) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+    });
+  </script>
+</body>
+</html>

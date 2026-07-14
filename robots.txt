@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-iclsusdev.vercel.app/sitemap.xml
